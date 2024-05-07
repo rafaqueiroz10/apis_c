@@ -32,14 +32,14 @@ int main () {
     Pilha* p = criarPilha ();
     int opcao;
     menu ();
-    printf ("Digite a opção: ");
+    printf ("Digite a opcao: ");
     scanf ("%d", &opcao);
 
     while (opcao != 12) {
         while (opcao != 1 && pilhaVazia (p)) {
             printf ("Pilha vazia!!\n");
             menu ();
-            printf ("Digite a opção: ");
+            printf ("Digite a opcao: ");
             scanf ("%d", &opcao);
         }
         switch (opcao) {
@@ -72,7 +72,7 @@ int main () {
             }
         }
         menu ();
-        printf ("Digite a opção: ");
+        printf ("Digite a opcao: ");
         scanf ("%d", &opcao);
     }
     esvaziarPilha (p);
@@ -205,8 +205,11 @@ void printStack (Pilha* p) {
 }
 
 void esvaziarPilha (Pilha* p) {
-    for (No* aux = p->topo; aux != NULL; aux = aux->prox)
-        free (aux);
+    No* aux2;
+    for (No* aux1 = p->topo; aux1 != NULL; aux1 = aux2) {
+        aux2 = aux1->prox;
+        free (aux1);
+    }
     free (p);
 }
 
