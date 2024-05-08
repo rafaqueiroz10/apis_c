@@ -37,7 +37,7 @@ int main () {
 
     while (opcao != 12) {
         while (opcao != 1 && pilhaVazia (p)) {
-            printf ("Pilha vazia!!\n");
+            printf ("Erro: Pilha vazia!!\n");
             menu ();
             printf ("Digite a opcao: ");
             scanf ("%d", &opcao);
