@@ -52,7 +52,7 @@ int main () {
                 inserir (f, valor);
                 break;
             }
-            case 2: printf ("%d removido da fila\n", remover (f));
+            case 2: printf ("%d removido da fila\n", remover (f)); break;
             case 3: printf ("Media dos elementos: %.1f\n", calculaMedia (f)); break;
             case 4: printf ("Soma dos elementos: %d\n", somatorio (f)); break;
             case 5: printf ("Tamanho da fila: %d valores\n", lenFila (f)); break;
@@ -132,16 +132,19 @@ void inserir (Fila* f, int valor) {
         novo->prox = NULL;
     }
     else {
-        novo->prox = f->fim;
+        f->fim->prox = novo;
         f->fim = novo;
+        novo->prox = NULL;
     }
+    f->quantos++;
 }
 
 int remover (Fila* f) {
     int numero = f->inicio->elemento;
     No* inicio = f->inicio;
-    free (inicio);
     f->inicio = f->inicio->prox;
+    free (inicio);
+    f->quantos--;
     return numero;
 }
 
@@ -218,7 +221,8 @@ void printFila (Fila* f) {
 
 int pesquisarElemento (Fila* f, int valor) {
     for (No* aux = f->inicio; aux != NULL; aux = aux->prox)
-        if (aux->elemento == valor) return 1;
+        if (aux->elemento == valor) 
+            return 1;
 
     return 0;
 }
