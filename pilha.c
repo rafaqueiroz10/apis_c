@@ -108,18 +108,16 @@ int pilhaVazia (Pilha* p) {
 
 void empilhar (Pilha* p, int valor) {
     No* novo = (No*) malloc (sizeof (No));
+    novo->num = valor;
 
     if (pilhaVazia (p)) {
-        p->topo = novo;
         p->base = novo;
-        novo->num = valor;
         novo->prox = NULL;
     } 
-    else {
+    else 
         novo->prox = p->topo;
-        p->topo = novo;
-        novo->num = valor;
-    }
+
+    p->topo = novo;
     p->quant++;
 }
 
