@@ -193,15 +193,15 @@ int getMenor (Fila* f) {
 int* retornarVetor (Fila* f) {
     int* arr = (int*) malloc (lenFila (f) * sizeof (int));
     int indice = 0;
-    for (No* aux = f->inicio; aux != NULL; aux = aux->prox) {
+    for (No* aux = f->inicio; aux != NULL; aux = aux->prox) 
         arr[indice++] = aux->elemento;
-    }
+
     return arr;
 }
 
 void printVetor (int* arr, int tam) {
     for (int i = 0; i < tam-1; i++) 
-        printf ("%d\n", arr[i]);
+        printf ("%d ", arr[i]);
     printf ("%d\n", arr[tam-1]);
 }
 
@@ -228,8 +228,8 @@ int pesquisarElemento (Fila* f, int valor) {
 }
 
 void esvaziarFila (Fila* f) {
-    No* prox;
-    for (No* aux = f->inicio; aux != NULL; aux = prox) {
+    No* prox, *aux;
+    for (aux = f->inicio; aux != NULL; aux = prox) {
         prox = aux->prox;
         free (aux);
     }
