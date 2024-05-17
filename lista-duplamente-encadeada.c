@@ -20,7 +20,6 @@ void remover (Lista* li, int valor);
 void printInicioFim (Lista* li);
 void printFimInicio (Lista* li);
 void esvaziarLista (Lista* li);
-int lenLista (Lista* li);
 
 int main () {
     Lista* li = criarLista ();
@@ -36,7 +35,7 @@ int main () {
     remover (li, 41);
     printInicioFim (li);
     printFimInicio (li);
-    printf ("Tamanho da lista: %d elementos\n", lenLista (li));
+    printf ("Tamanho da lista: %d elementos\n", li->quantos);
     esvaziarLista (li); 
 
     return 0;
@@ -160,8 +159,4 @@ void esvaziarLista (Lista* li) {
         free (aux);
     }
     free (li);
-}
-
-int lenLista (Lista* li) {
-    return li->quantos;
 }
